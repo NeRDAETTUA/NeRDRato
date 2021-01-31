@@ -58,6 +58,21 @@ c:/program files/microchip/xc16/v1.61/bin/bin/../../lib\libpic30-elf.a(delay32ep
                               build/C30_dsPIC33FJ256GP710A/production/main.o (___delay32)
 
 
+Selected CodeGuard Options:
+  FGS:GWRP:OFF
+  FGS:GCP:OFF
+
+CodeGuard FLASH Memory:
+  boot    (none)
+  secure  (none)
+  general 0x200 to 0x557ea
+
+CodeGuard RAM Memory:
+  general 0x1000 to 0xcfff
+  secure  (none)
+  boot    (none)
+
+
 xc16-ld 1.61 (B)
 
 Default Code Model: Small
@@ -104,10 +119,12 @@ External Symbols in Program Memory (by address):
                   0x0002fa                  __DefaultInterrupt
                   0x000300                  _main
                   0x000338                  ___delay32
+                  0x0557fa                  __FGS.sec
 
 External Symbols in Program Memory (by name):
 
                   0x0002fa                  __DefaultInterrupt
+                  0x0557fa                  __FGS.sec
                   0x000338                  ___delay32
                   0x000248                  __data_init
                   0x000248                  __data_init_extended
@@ -206,8 +223,10 @@ __FOSC
 __FOSCSEL
  *(__FOSCSEL.sec*)
 
-__FGS
+__FGS             0x0557fa          0x2
  *(__FGS.sec*)
+ __FGS.sec        0x0557fa          0x2 /CW/_FGS–ÅŸ
+                  0x0557fa                  __FGS.sec
 
 __FUID0
  *(__FUID0.sec*)
@@ -224,11 +243,11 @@ __FUID3
 .comment
  *(.comment)
 
-.debug_info       0x000000        0xae1
+.debug_info       0x000000        0xacb
  *(.debug_info)
- .debug_info      0x000000        0x157 build/C30_dsPIC33FJ256GP710A/production/configuration_bits.o
- .debug_info      0x000157        0x83f build/C30_dsPIC33FJ256GP710A/production/main.o
- .debug_info      0x000996        0x14b build/C30_dsPIC33FJ256GP710A/production/system.o
+ .debug_info      0x000000        0x14c build/C30_dsPIC33FJ256GP710A/production/configuration_bits.o
+ .debug_info      0x00014c        0x83f build/C30_dsPIC33FJ256GP710A/production/main.o
+ .debug_info      0x00098b        0x140 build/C30_dsPIC33FJ256GP710A/production/system.o
  *(.gnu.linkonce.wi.*)
 
 .debug_abbrev     0x000000        0x105
@@ -237,11 +256,11 @@ __FUID3
  .debug_abbrev    0x00001f         0xc7 build/C30_dsPIC33FJ256GP710A/production/main.o
  .debug_abbrev    0x0000e6         0x1f build/C30_dsPIC33FJ256GP710A/production/system.o
 
-.debug_line       0x000000        0x14e
+.debug_line       0x000000        0x14d
  *(.debug_line)
  .debug_line      0x000000         0x1a build/C30_dsPIC33FJ256GP710A/production/configuration_bits.o
- .debug_line      0x00001a        0x11a build/C30_dsPIC33FJ256GP710A/production/main.o
- .debug_line      0x000134         0x1a build/C30_dsPIC33FJ256GP710A/production/system.o
+ .debug_line      0x00001a        0x119 build/C30_dsPIC33FJ256GP710A/production/main.o
+ .debug_line      0x000133         0x1a build/C30_dsPIC33FJ256GP710A/production/system.o
 
 .debug_frame      0x000000         0x2e
  *(.debug_frame)
@@ -1373,6 +1392,7 @@ LOAD c:/program files/microchip/xc16/v1.61/bin/bin/../../lib\libm-elf.a
 LOAD c:/program files/microchip/xc16/v1.61/bin/bin/../../lib\libc-elf.a
 END GROUP
 OUTPUT(dist/C30_dsPIC33FJ256GP710A/production/MPLab_dsPIC.production.elf elf32-pic30)
+LOAD /CW/_FGS–ÅŸ
 LOAD default_isr
 
 .debug_pubtypes
@@ -1398,6 +1418,24 @@ __c30_signature
                   0x000101          0x6 c:/program files/microchip/xc16/v1.61/bin/bin/../../lib\libpic30-elf.a(data_init_extended.o)
  __c30_signature
                   0x000107          0x6 c:/program files/microchip/xc16/v1.61/bin/bin/../../lib\libpic30-elf.a(delay32ep.eo)
+
+.config_IESO      0x0557f8          0x2
+ .config_IESO     0x0557f8          0x2 build/C30_dsPIC33FJ256GP710A/production/configuration_bits.o
+
+.config_FCKSM     0x0557f6          0x2
+ .config_FCKSM    0x0557f6          0x2 build/C30_dsPIC33FJ256GP710A/production/configuration_bits.o
+
+.config_FWDTEN    0x0557f4          0x2
+ .config_FWDTEN
+                  0x0557f4          0x2 build/C30_dsPIC33FJ256GP710A/production/configuration_bits.o
+
+.config_WDTWIN    0x0557f2          0x2
+ .config_WDTWIN
+                  0x0557f2          0x2 build/C30_dsPIC33FJ256GP710A/production/configuration_bits.o
+
+.config_JTAGEN    0x0557f0          0x2
+ .config_JTAGEN
+                  0x0557f0          0x2 build/C30_dsPIC33FJ256GP710A/production/configuration_bits.o
 
 .text             0x000300         0x38
  .text            0x000300         0x38 build/C30_dsPIC33FJ256GP710A/production/main.o
