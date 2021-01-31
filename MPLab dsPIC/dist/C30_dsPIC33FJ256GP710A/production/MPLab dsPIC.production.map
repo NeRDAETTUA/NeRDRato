@@ -69,10 +69,10 @@ Default Scalar Model: Small
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x200               0x100           0x180  (384)
-.init.delay32                0x300                0x1c            0x2a  (42)
-.text                        0x31c                0x16            0x21  (33)
+.text                        0x300                0x38            0x54  (84)
+.init.delay32                0x338                0x1c            0x2a  (42)
 
-                 Total "program" memory used (bytes):          0x1cb  (459) <1%
+                 Total "program" memory used (bytes):          0x1fe  (510) <1%
 
 
 "data" Memory  [Origin = 0x1000, Length = 0xc000]
@@ -102,18 +102,18 @@ External Symbols in Program Memory (by address):
                   0x000248                  __data_init
                   0x000248                  __data_init_extended
                   0x0002fa                  __DefaultInterrupt
-                  0x000300                  ___delay32
-                  0x00031c                  _main
+                  0x000300                  _main
+                  0x000338                  ___delay32
 
 External Symbols in Program Memory (by name):
 
                   0x0002fa                  __DefaultInterrupt
-                  0x000300                  ___delay32
+                  0x000338                  ___delay32
                   0x000248                  __data_init
                   0x000248                  __data_init_extended
                   0x00023c                  __psv_init
                   0x000200                  __resetPRI
-                  0x00031c                  _main
+                  0x000300                  _main
 
 Memory Configuration
 
@@ -224,32 +224,32 @@ __FUID3
 .comment
  *(.comment)
 
-.debug_info       0x000000        0x597
+.debug_info       0x000000        0xae1
  *(.debug_info)
  .debug_info      0x000000        0x157 build/C30_dsPIC33FJ256GP710A/production/configuration_bits.o
- .debug_info      0x000157        0x2f5 build/C30_dsPIC33FJ256GP710A/production/main.o
- .debug_info      0x00044c        0x14b build/C30_dsPIC33FJ256GP710A/production/system.o
+ .debug_info      0x000157        0x83f build/C30_dsPIC33FJ256GP710A/production/main.o
+ .debug_info      0x000996        0x14b build/C30_dsPIC33FJ256GP710A/production/system.o
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev     0x000000         0xca
+.debug_abbrev     0x000000        0x105
  *(.debug_abbrev)
  .debug_abbrev    0x000000         0x1f build/C30_dsPIC33FJ256GP710A/production/configuration_bits.o
- .debug_abbrev    0x00001f         0x8c build/C30_dsPIC33FJ256GP710A/production/main.o
- .debug_abbrev    0x0000ab         0x1f build/C30_dsPIC33FJ256GP710A/production/system.o
+ .debug_abbrev    0x00001f         0xc7 build/C30_dsPIC33FJ256GP710A/production/main.o
+ .debug_abbrev    0x0000e6         0x1f build/C30_dsPIC33FJ256GP710A/production/system.o
 
-.debug_line       0x000000        0x146
+.debug_line       0x000000        0x14e
  *(.debug_line)
  .debug_line      0x000000         0x1a build/C30_dsPIC33FJ256GP710A/production/configuration_bits.o
- .debug_line      0x00001a        0x112 build/C30_dsPIC33FJ256GP710A/production/main.o
- .debug_line      0x00012c         0x1a build/C30_dsPIC33FJ256GP710A/production/system.o
+ .debug_line      0x00001a        0x11a build/C30_dsPIC33FJ256GP710A/production/main.o
+ .debug_line      0x000134         0x1a build/C30_dsPIC33FJ256GP710A/production/system.o
 
 .debug_frame      0x000000         0x2e
  *(.debug_frame)
  .debug_frame     0x000000         0x2e build/C30_dsPIC33FJ256GP710A/production/main.o
 
-.debug_str        0x000000         0x13
+.debug_str        0x000000         0x2b
  *(.debug_str)
- .debug_str       0x000000         0x13 build/C30_dsPIC33FJ256GP710A/production/main.o
+ .debug_str       0x000000         0x2b build/C30_dsPIC33FJ256GP710A/production/main.o
 
 .debug_loc
  *(.debug_loc)
@@ -1376,33 +1376,33 @@ OUTPUT(dist/C30_dsPIC33FJ256GP710A/production/MPLab_dsPIC.production.elf elf32-p
 LOAD default_isr
 
 .debug_pubtypes
-                  0x000018         0x8b
+                  0x000018         0xd1
  .debug_pubtypes
                   0x000018         0x12 build/C30_dsPIC33FJ256GP710A/production/configuration_bits.o
  .debug_pubtypes
-                  0x00002a         0x67 build/C30_dsPIC33FJ256GP710A/production/main.o
+                  0x00002a         0xad build/C30_dsPIC33FJ256GP710A/production/main.o
  .debug_pubtypes
-                  0x000091         0x12 build/C30_dsPIC33FJ256GP710A/production/system.o
+                  0x0000d7         0x12 build/C30_dsPIC33FJ256GP710A/production/system.o
 
 __c30_signature
-                  0x0000a3         0x24
+                  0x0000e9         0x24
  __c30_signature
-                  0x0000a3          0x6 build/C30_dsPIC33FJ256GP710A/production/configuration_bits.o
+                  0x0000e9          0x6 build/C30_dsPIC33FJ256GP710A/production/configuration_bits.o
  __c30_signature
-                  0x0000a9          0x6 build/C30_dsPIC33FJ256GP710A/production/main.o
+                  0x0000ef          0x6 build/C30_dsPIC33FJ256GP710A/production/main.o
  __c30_signature
-                  0x0000af          0x6 build/C30_dsPIC33FJ256GP710A/production/system.o
+                  0x0000f5          0x6 build/C30_dsPIC33FJ256GP710A/production/system.o
  __c30_signature
-                  0x0000b5          0x6 c:/program files/microchip/xc16/v1.61/bin/bin/../../lib\libpic30-elf.a(crt0_extendedep.o)
+                  0x0000fb          0x6 c:/program files/microchip/xc16/v1.61/bin/bin/../../lib\libpic30-elf.a(crt0_extendedep.o)
  __c30_signature
-                  0x0000bb          0x6 c:/program files/microchip/xc16/v1.61/bin/bin/../../lib\libpic30-elf.a(data_init_extended.o)
+                  0x000101          0x6 c:/program files/microchip/xc16/v1.61/bin/bin/../../lib\libpic30-elf.a(data_init_extended.o)
  __c30_signature
-                  0x0000c1          0x6 c:/program files/microchip/xc16/v1.61/bin/bin/../../lib\libpic30-elf.a(delay32ep.eo)
+                  0x000107          0x6 c:/program files/microchip/xc16/v1.61/bin/bin/../../lib\libpic30-elf.a(delay32ep.eo)
 
-.init.delay32     0x000300         0x1c
- .init.delay32    0x000300         0x1c c:/program files/microchip/xc16/v1.61/bin/bin/../../lib\libpic30-elf.a(delay32ep.eo)
-                  0x000300                  ___delay32
+.text             0x000300         0x38
+ .text            0x000300         0x38 build/C30_dsPIC33FJ256GP710A/production/main.o
+                  0x000300                  _main
 
-.text             0x00031c         0x16
- .text            0x00031c         0x16 build/C30_dsPIC33FJ256GP710A/production/main.o
-                  0x00031c                  _main
+.init.delay32     0x000338         0x1c
+ .init.delay32    0x000338         0x1c c:/program files/microchip/xc16/v1.61/bin/bin/../../lib\libpic30-elf.a(delay32ep.eo)
+                  0x000338                  ___delay32

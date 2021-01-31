@@ -4,13 +4,24 @@
 #include <xc.h>
 #include <libpic30.h>
 
+#define BAUDRATE 115200
+#define BRGVAL ((FCY/BAUDRATE)/16)-1
+
 int16_t main(void){
-    _TRISA0 = 0;
+    
+    _U1RXR = 36;
+    _RP37R = 1;
+    
+    U1MODEbits.STSEL = 0;
+    U1MODEbits.PDSEL = 0;
+    U1MODEbits.ABAUD = 0;
+    U1MODEbits.BRGH = 0;
+    U1MODEbits.UARTEN = 1;
+    U1STAbits.UTXEN = 1;
+    U1BRG = BRGVAL;
 
     while(1){
-        _LATA0 = 0;
-        __delay_ms(1000);
-        _LATA0 = 1;
+        U1TXREG = 'a';
         __delay_ms(1000);
     }
 }
