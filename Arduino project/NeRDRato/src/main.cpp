@@ -4,10 +4,13 @@
 
 void setup() {
     Serial.begin(9600);
-    //init_motors();
+    sensors_init();
+    init_motors();
 }
 
 void loop() {
+    delay(3000);
+    set_motor_speed(1, 40, FORWARD);
     /*
     set_motor_speed(1, 100, FORWARD);
     delay(1000);
