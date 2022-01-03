@@ -1,7 +1,7 @@
 #include <sensors.h>
 
-static volatile int encoder1_steps = 0;
-static volatile int encoder2_steps = 0;
+static volatile int left_encoder_steps = 0;
+static volatile int right_encoder_steps = 0;
 
 void sensors_init(){
     pinMode(OUT1_PIN, INPUT);
@@ -9,11 +9,11 @@ void sensors_init(){
     pinMode(OUT3_PIN, INPUT);
     pinMode(OUT4_PIN, INPUT);
     pinMode(OUT5_PIN, INPUT);
-    pinMode(MOTOR1_ENCODER, INPUT);
-//    pinMode(MOTOR2_ENCODER, INPUT);
+    pinMode(LEFT_MOTOR_ENCODER, INPUT);
+//    pinMode(RIGHT_MOTOR_ENCODER, INPUT);
 
-    attachInterrupt(digitalPinToInterrupt(MOTOR1_ENCODER), interrupt_encoder1, RISING);
-//    attachInterrupt(digitalPinToInterrupt(MOTOR2_ENCODER), interrupt_encoder2, RISING);
+    attachInterrupt(digitalPinToInterrupt(LEFT_MOTOR_ENCODER), interrupt_left_encoder, RISING);
+//    attachInterrupt(digitalPinToInterrupt(RIGHT_MOTOR_ENCODER), interrupt_right_encoder, RISING);
 }
 
 ir_sensors read_sensors(){
@@ -28,11 +28,18 @@ ir_sensors read_sensors(){
     return sensor_struct;
 }
 
-void interrupt_encoder1(){
-    encoder1_steps++;
-    if(encoder1_steps % ENCODER_SECTORS == 0){
+void interrupt_left_encoder(){
+    if(get_motor_direction(LEFT_MOTOR) == FORWARD){
+        left_encoder_steps++;
+    }else{
+        left_encoder_steps--;
+    }
+    /*
+    left_encoder_steps++;
+    if(left_encoder_steps % ENCODER_SECTORS == 0){
         Serial.println("+1 Rotation");
     }
+    */
 }
 
 void interrupt_encoder2(){

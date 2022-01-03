@@ -1,28 +1,42 @@
 #include <motor_control.h>
 
-bool robot_direction = true; // true -> forward, false -> backward
+volatile bool left_motor_direction = FORWARD;
+volatile bool right_motor_direction = FORWARD;
 
 void init_motors(){
-    pinMode(MOTOR1_PIN1, OUTPUT);
-    pinMode(MOTOR1_PIN2, OUTPUT);
-    pinMode(MOTOR2_PIN1, OUTPUT);
-    pinMode(MOTOR2_PIN2, OUTPUT);
+    pinMode(LEFT_MOTOR_PIN1, OUTPUT);
+    pinMode(LEFT_MOTOR_PIN2, OUTPUT);
+    pinMode(RIGHT_MOTOR_PIN1, OUTPUT);
+    pinMode(RIGHT_MOTOR_PIN2, OUTPUT);
 }
 
 void set_motor_speed(int motor, int percentage, bool motor_direction){  // true -> forward, false -> backward
     int analog_value = (percentage*255)/100 % 256;
 
-    if(motor == 1 && motor_direction == FORWARD){
-        analogWrite(MOTOR1_PIN1, analog_value);
-        digitalWrite(MOTOR1_PIN2, 0);
-    }else if(motor == 1 && motor_direction == BACKWARD){
-        analogWrite(MOTOR1_PIN2, analog_value);
-        digitalWrite(MOTOR1_PIN1, 0);
-    }else if(motor == 2 && motor_direction == FORWARD){
-        analogWrite(MOTOR2_PIN1, analog_value);
-        digitalWrite(MOTOR2_PIN2, 0);
-    }else if(motor == 2 && !motor_direction == BACKWARD){
-        analogWrite(MOTOR2_PIN2, analog_value);
-        digitalWrite(MOTOR2_PIN1, 0);
+    if(motor == LEFT_MOTOR && motor_direction == FORWARD){
+        analogWrite(LEFT_MOTOR_PIN1, analog_value);
+        digitalWrite(LEFT_MOTOR_PIN2, 0);
+        left_motor_direction = motor_direction;
+    }else if(motor == LEFT_MOTOR && motor_direction == BACKWARD){
+        analogWrite(LEFT_MOTOR_PIN2, analog_value);
+        digitalWrite(LEFT_MOTOR_PIN1, 0);
+        left_motor_direction = motor_direction;
+    }else if(motor == RIGHT_MOTOR && motor_direction == FORWARD){
+        analogWrite(RIGHT_MOTOR_PIN2, analog_value);
+        digitalWrite(RIGHT_MOTOR_PIN2, 0);
+        right_motor_direction = motor_direction;
+    }else if(motor == RIGHT_MOTOR && motor_direction == BACKWARD){
+        analogWrite(RIGHT_MOTOR_PIN1, analog_value);
+        digitalWrite(RIGHT_MOTOR_PIN2, 0);
+        right_motor_direction = motor_direction;
     }
+}
+
+bool get_motor_direction(int motor){
+    if(motor == LEFT_MOTOR){
+        return left_motor_direction;
+    }else if(motor == RIGHT_MOTOR){
+        return right_motor_direction;
+    }
+    
 }

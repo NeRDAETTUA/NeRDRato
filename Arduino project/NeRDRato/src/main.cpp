@@ -9,8 +9,16 @@ void setup() {
 }
 
 void loop() {
-    delay(3000);
-    set_motor_speed(1, 40, FORWARD);
+    set_motor_speed(LEFT_MOTOR, 40, FORWARD);
+    for(int i=0; i<10; i++){
+        print_left_encoder_steps();
+        delay(100);
+    }
+    set_motor_speed(LEFT_MOTOR, 40, BACKWARD);
+    for(int i=0; i<10; i++){
+        print_left_encoder_steps();
+        delay(100);
+    }
     /*
     set_motor_speed(1, 100, FORWARD);
     delay(1000);
